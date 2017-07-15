@@ -10,6 +10,7 @@ class ReflectionApp
 	JLabel jl1,jl2;
 	JTextField tf1;
 	JButton jb1;
+	int w,h;
 	ReflectionApp()
 	{
 		
@@ -17,8 +18,8 @@ class ReflectionApp
 		
 		Toolkit t =jf.getToolkit();
 		Dimension screenSize = t.getScreenSize();
-		int w=screenSize.width;
-		int h=screenSize.height;
+		w=screenSize.width;
+		h=screenSize.height;
 		
 		jf.setSize(w,h);
 		
@@ -58,6 +59,7 @@ class ReflectionApp
 		jb1.setBounds(70,130,100,20);
 		jp2.add(jb1);
 		jb1.setFont(new Font("Cosmic Sans MS", Font.BOLD, 12));
+		jb1.addActionListener(new ButtonClick(this));
 														
 		jp2.setLayout(null);
 		jp.setLayout(null);
@@ -73,4 +75,54 @@ class ReflectionApp
 		ReflectionApp r = new ReflectionApp();
 	}
 }
+
+class ButtonClick implements ActionListener
+{
+	ReflectionApp t;
+	int w,h;
+	JTextArea jp1 = new JTextArea();
+	JTextArea jp2 = new JTextArea();
+	JTextArea jp3 = new JTextArea();
+	JTextArea jp4 = new JTextArea();
+	JTextArea jp5 = new JTextArea();
+	JScrollPane sp=new JScrollPane();  
+	
+	ButtonClick(ReflectionApp t)
+	{
+		this.t=t;
+		w=t.w;
+		h=t.h;
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		t.jf.remove(t.jp2);
+		//SwingUtilities.updateComponentTreeUI(t.jf);	//for refreshing Jframe NOT USED OUTDATED
+		t.jf.repaint();			//ALTERNATIVE
+		
+		jp1.setBounds(30,20,((w-80)/3),((h-50)/2));
+		t.jp.add(jp1);
+		jp1.setBackground(Color.green);
+		sp.setBounds((((w-80)/3)+20),20,10,((h-50)/2));
+		jp1.add(sp);
+		
+		jp2.setBounds(((w-80)/3 + 40),20,((w-80)/3),((h-50)/2));
+		t.jp.add(jp2);
+		jp2.setBackground(Color.yellow);
+		
+		jp3.setBounds(((2*((w-80)/3)) + 50),20,((w-80)/3),((h-50)/2));
+		t.jp.add(jp3);
+		jp3.setBackground(Color.blue);
+		
+		jp4.setBounds((w + 130)/6,((h+10)/2),((w-80)/3),((h-50)/2));
+		t.jp.add(jp4);
+		jp4.setBackground(Color.pink);
+		
+		jp5.setBounds((3*w - 20)/6,(h+10)/2,(w-80)/3,(h-50)/2);
+		t.jp.add(jp5);
+		jp5.setBackground(Color.orange);
+		
+		
+	}	
+}	
 
