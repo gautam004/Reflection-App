@@ -96,6 +96,8 @@ class ButtonClick implements ActionListener
 	
 	public void actionPerformed(ActionEvent e)
 	{
+		String s = t.tf1.getText();
+		Methods.Methods(s);
 		t.jf.remove(t.jp2);
 		//SwingUtilities.updateComponentTreeUI(t.jf);	//for refreshing Jframe NOT USED OUTDATED
 		t.jf.repaint();			//ALTERNATIVE
@@ -125,4 +127,6 @@ class ButtonClick implements ActionListener
 		
 	}	
 }	
+
+
 
